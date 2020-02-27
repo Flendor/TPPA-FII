@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Intro</string>
+    <string name="app_name">Grocery store</string>
+
+    <string name="image"> The Image of the product </string>
 </resources>
