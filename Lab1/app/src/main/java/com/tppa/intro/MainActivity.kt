@@ -4,6 +4,8 @@ import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
@@ -14,6 +16,11 @@ import com.tppa.intro.products.ProductFragment
 
 
 class MainActivity : AppCompatActivity() {
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         productsWithDescriptions[products[5]] = "It's good but it's not that healthy."
 
         val fancierFont = Typeface.createFromAsset(assets, "fonts/righteous.ttf")
+        description.typeface = fancierFont
 
         val productAdapter = object : ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, products) {
             override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -47,7 +55,10 @@ class MainActivity : AppCompatActivity() {
         myListView.setOnItemClickListener{ parent, _, position, _ ->
             goToFragment(parent.getItemAtPosition(position).toString(),
                 productsWithDescriptions[parent.getItemAtPosition(position).toString()]!!)
+            // description.text = productsWithDescriptions[parent.getItemAtPosition(position).toString()]
         }
+
+        Log.i("Create", "onCreate()")
     }
 
     private fun goToFragment(product: String, description: String) {
@@ -57,5 +68,40 @@ class MainActivity : AppCompatActivity() {
         fragment = ProductFragment.newInstance(product, description)
         fmManager.popBackStackImmediate()
         transaction.replace(R.id.mainApp, fragment).addToBackStack(null).commit()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("Description", description.text.toString())
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        description.text = savedInstanceState.getString("Description")
+    }
+
+    override fun onStart(){
+        super.onStart()
+        Log.i("Start", "onStart()")
+    }
+
+    override fun onPause(){
+        super.onPause()
+        Log.i("Pause", "onPause()")
+    }
+
+    override fun onResume(){
+        super.onResume()
+        Log.i("Resume", "onResume()")
+    }
+
+    override fun onStop(){
+        super.onStop()
+        Log.i("Stop", "onStop()")
+    }
+
+    override fun onDestroy(){
+        super.onDestroy()
+        Log.i("Destroy", "onDestroy()")
     }
 }

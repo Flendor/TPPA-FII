@@ -7,9 +7,21 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity" android:background="@android:color/background_light" android:id="@+id/mainApp">
     <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="453dp"
+            android:layout_height="356dp" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/myListView"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+    />
+    <TextView
+            android:text=""
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_width="293dp"
+            android:layout_height="134dp"
+            android:id="@+id/description" android:gravity="center"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/myListView"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@android:color/black"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
