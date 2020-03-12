@@ -1,11 +1,14 @@
 package com.tppa.intro
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
@@ -16,6 +19,41 @@ import com.tppa.intro.products.ProductFragment
 
 
 class MainActivity : AppCompatActivity() {
+
+    var isProductFragmentOn = false
+
+    override fun onBackPressed() {
+        val count = supportFragmentManager.backStackEntryCount
+        if (count == 0 || !isProductFragmentOn)
+            super.onBackPressed()
+        else {
+            AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_delete)
+                .setTitle("Go back to shop?")
+                .setPositiveButton("Yes!") { _, _ ->
+                    isProductFragmentOn = false
+                    super.onBackPressed()
+                }
+                .setNegativeButton("Not yet!", null)
+                .show()
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.options -> {
+                val intent = Intent(this, OptionsActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.help -> {
+                Log.i("HELP", "HELP WAS PRESSED")
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
@@ -68,6 +106,7 @@ class MainActivity : AppCompatActivity() {
         fragment = ProductFragment.newInstance(product, description)
         fmManager.popBackStackImmediate()
         transaction.replace(R.id.mainApp, fragment).addToBackStack(null).commit()
+        isProductFragmentOn = true
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
