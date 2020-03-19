@@ -1,42 +1,38 @@
-package com.tppa.intro
+package com.tppa.intro.options
 
+import android.app.Application
+import android.content.SharedPreferences
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.View
-import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import com.tppa.intro.R
 import kotlinx.android.synthetic.main.activity_options.*
-import java.io.File
 
 class OptionsActivity : AppCompatActivity() {
 
-    fun changeColor(view: View?) {
-        val button: Button = view as Button
-        when (button.text) {
-            "White" -> {
-                button.text = "Yellow"
-                // File("color.txt").writeText("Yellow")
-                optionsApp.setBackgroundColor(Color.parseColor("#FADA5E"))
-            }
-            "Yellow" -> {
-                button.text = "Green"
-                // File("color.txt").writeText("Green")
+    private fun checkColor(sharedPreferences: SharedPreferences, key: String) {
+        when (sharedPreferences.getString(key, "")) {
+            "3" -> {
                 optionsApp.setBackgroundColor(Color.parseColor("#1D800E"))
             }
-            "Green" -> {
-                button.text = "Red"
-                // File("color.txt").writeText("Red")
-                optionsApp.setBackgroundColor(Color.parseColor("#F51B00"))
+            "2" -> {
+                optionsApp.setBackgroundColor(Color.parseColor("#FADA5E"))
+            }
+            "1" -> {
+                optionsApp.setBackgroundColor(Color.parseColor("#B90E0A"))
             }
             else -> {
-                button.text = "White"
-                // File("color.txt").writeText("White")
                 optionsApp.setBackgroundColor(Color.parseColor("#FFFFFF"))
             }
         }
     }
+
+    private val listener: SharedPreferences.OnSharedPreferenceChangeListener =
+        SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences, key ->
+            checkColor(sharedPreferences, key)
+        }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
@@ -47,6 +43,15 @@ class OptionsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_options)
 
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.optionsApp, OptionsFragment())
+            .commit()
+
+        val sharedPreferences: SharedPreferences = application.getSharedPreferences("com.tppa.sharedpreferences", Application.MODE_PRIVATE)
+        sharedPreferences.registerOnSharedPreferenceChangeListener(listener)
+
+        checkColor(sharedPreferences, "color")
 
         Log.i("Create Options", "onCreate()")
     }

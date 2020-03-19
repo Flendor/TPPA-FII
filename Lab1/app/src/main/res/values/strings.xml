@@ -3,4 +3,17 @@
     <string name="options">Options</string>
     <string name="help">Help</string>
     <string name="image"> The Image of the product </string>
+    <string name="save"> Save Product Data Locally</string>
+    <string-array name="shop_color">
+        <item>Green</item>
+        <item>Yellow</item>
+        <item>Red</item>
+        <item>White</item>
+    </string-array>
+    <string-array name="shop_color_array">
+        <item>3</item>
+        <item>2</item>
+        <item>1</item>
+        <item>0</item>
+    </string-array>
 </resources>

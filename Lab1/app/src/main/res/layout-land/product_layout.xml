@@ -5,8 +5,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity" android:background="@android:color/background_light"
-        android:id="@+id/mainApp"
+        tools:context=".MainActivity" android:background="@color/white"
+        android:id="@+id/mainFragment"
         android:clickable="true"
         android:focusable="true">
 
@@ -43,6 +43,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="30dp" app:layout_constraintStart_toEndOf="@+id/productImage"
             android:layout_marginStart="56dp"
-            android:layout_marginTop="90dp" app:layout_constraintTop_toTopOf="parent"/>
+            android:layout_marginTop="120dp" app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/productPrice" android:textSize="36sp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="161dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="30dp" android:gravity="center"
+            android:textColor="@android:color/black" android:layout_marginTop="55dp"
+            app:layout_constraintTop_toTopOf="parent" android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="1.0"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

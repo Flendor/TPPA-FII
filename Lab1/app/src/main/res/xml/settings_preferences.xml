@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+            android:key="color"
+            android:title="Change background color"
+            android:summary="Change the background color in the shop."
+            android:entries="@array/shop_color"
+            android:entryValues="@array/shop_color_array"/>
+
+</PreferenceScreen>

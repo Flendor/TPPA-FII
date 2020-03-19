@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".OptionsActivity">
+        <activity android:name=".options.OptionsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.OPTIONS"/>
 

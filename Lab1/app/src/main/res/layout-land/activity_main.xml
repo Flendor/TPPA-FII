@@ -13,15 +13,4 @@
             android:id="@+id/myListView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
-    <TextView
-            android:text=""
-            android:layout_width="204dp"
-            android:layout_height="210dp"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:id="@+id/description" android:layout_marginStart="43dp"
-            app:layout_constraintStart_toEndOf="@+id/myListView" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="42dp" android:layout_marginTop="95dp" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="90dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:gravity="center" android:textColor="@android:color/black"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
