@@ -4,6 +4,10 @@
           android:title="@string/options"/>
     <item android:id="@+id/saveData"
           android:title="@string/save"/>
+    <item android:id="@+id/sensorsListen"
+          android:title="@string/sensors"/>
+    <item android:id="@+id/location"
+          android:title="@string/location"/>
     <item android:id="@+id/help"
           android:title="@string/help" />
 </menu>

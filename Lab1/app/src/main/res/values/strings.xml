@@ -4,6 +4,8 @@
     <string name="help">Help</string>
     <string name="image"> The Image of the product </string>
     <string name="save"> Save Product Data Locally</string>
+    <string name="sensors"> Sensor Info</string>
+    <string name="location"> Location Info</string>
     <string-array name="shop_color">
         <item>Green</item>
         <item>Yellow</item>

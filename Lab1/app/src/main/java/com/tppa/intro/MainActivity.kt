@@ -22,7 +22,9 @@ import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import androidx.fragment.app.Fragment
+import com.tppa.intro.location.LocationActivity
 import com.tppa.intro.options.OptionsActivity
+import com.tppa.intro.sensors.SensorsActivity
 import com.tppa.intro.products.ProductFragment
 
 
@@ -81,6 +83,16 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.saveData -> {
                 writeToDB()
+                true
+            }
+            R.id.sensorsListen -> {
+                val intent = Intent(this, SensorsActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.location -> {
+                val intent = Intent(this, LocationActivity::class.java)
+                startActivity(intent)
                 true
             }
             R.id.help -> {
