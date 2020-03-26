@@ -1,8 +1,7 @@
-Descriere Laborator 5 TPPA
+Descriere Laborator 6 TPPA
 
-În aplicația mea, Options Menu are 3 iteme: "Options", "Save Product Data Locally" și "Help".
+Pentru acest laborator, am mai adăugat două iteme în Options Menu: Sensor Info și Location Info.
 
-"Options" deschide o nouă activitate, în care pornește un fragment ce extinde PreferenceFragmentCompat. 
-Am setat un OnSharedPreferenceChangeListener pentru preferințele din PreferenceScreen, în care am scris informația în alte SharedPreferences de la 'com.tppa.sharedpreferences', accesibile din toată aplicația. Setarea pentru care am optat este culoarea background-ului, care poate fi verde, roșu, galben sau alb. Celelalte activități o să seteze culoarea la fiecare onCreate() și vor avea și un OnSharedPreferenceChangeListener setat pentru preferințele din 'com.tppa.sharedpreferences', care va schimba culoarea corespunzător. Fragmentul în care sunt afișate detaliile despre produs își va verifica culoarea în onActivityCreated() și în onResume().
+Opțiunea "Sensor Info" deschide o nouă activitate care afișeasa în log-uri toate informațiile despre toți senzorii din dispozitiv, iar pe ecran sunt afișate valori înregistrate de 5 dintre acestea: proximitate, gravitatie, presiune, câmp magnetic și gyroscop. În activity, am implementat interfața SensorEventListener și am suprascris funcțiile onAccuracyChanged() - nu am avut nevoie de cod aici - și onSensorChanged() - În funcție de tipul de senzor, am afișat valoarea în textview-ul care trebuie. Am inițializat toți cei 5 senzori si am setat listener pe "this", deoarece am implementat interfața SensorEventListener. La onStop() și onPause() am scos listener-ul, iar la onCreate() și la onResume() l-am setat.
 
-"Save Product Data Locally" apelează o funcție care inserează toate produsele în baza de date SQLite, numită "Grocery Store", în tabelul "FOOD" cu coloanele "name", "description", "price". Tabelul este șters înainte de operațiile de insert pentru o scriere de la 0. După inserare, am afișat în Log-uri produsele pentru a verifica corectitudinea scrierii în baza de date.
+Location "Info" va cere prima dată permisiunile utilizatorului pentru a-i accesa locația prin GPS (ACCESS_FINE_LOCATION). Dacă le are deja, nu vor mai fi cerute. Programul va afișa coordonatele pe ecran (latitudine, longitudine și altitudine). Am setat un LocationListener cu ajutorul funcției requestLocationUpdates(), pe LocationManager. La fel ca la senzori, am scos listener-ul la onStop() și onPause().
