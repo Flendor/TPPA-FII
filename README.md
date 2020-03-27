@@ -1,3 +1,6 @@
+Rezolvarea cerințelor din laboratoarele de până acum se află in proiectul "Lab1".
+În acest README va fi explicată rezolvarea ultimului laborator, săptămânal.
+
 Descriere Laborator 6 TPPA
 
 Pentru acest laborator, am mai adăugat două iteme în Options Menu: Sensor Info și Location Info.
