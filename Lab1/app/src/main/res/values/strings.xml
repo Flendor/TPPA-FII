@@ -6,6 +6,7 @@
     <string name="save"> Save Product Data Locally</string>
     <string name="sensors"> Sensor Info</string>
     <string name="location"> Location Info</string>
+    <string name="camera"> Take pictures</string>
     <string-array name="shop_color">
         <item>Green</item>
         <item>Yellow</item>
